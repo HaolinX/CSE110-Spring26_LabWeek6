@@ -24,6 +24,20 @@ function getRecipesFromStorage() {
 	// A9. TODO - Complete the functionality as described in this function
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+	
+	const recipesString = localStorage.getItem('recipes'); // get the 'recipes' string from localStorage
+
+	// if there is nothing, then return empty array
+	if (recipesString === null) {
+		return [];
+  	}
+
+	// parse the JSON string into an array and return it
+	const recipesArray = JSON.parse(recipesString);
+	return recipesArray;
+
+
 }
 
 /**
@@ -39,6 +53,17 @@ function addRecipesToDocument(recipes) {
 	//            create a <recipe-card> element for each one, and populate
 	//            each <recipe-card> with that recipe data using element.data = ...
 	//            Append each element to <main>
+	const mainElement = document.querySelector('main');
+
+	for (let i = 0; i < recipes.length; i++) {
+
+    	// create new recipe card
+    	const recipeCard = document.createElement('recipe-card');
+
+    	recipeCard.data = recipes[i]; // get the current recipe then fill the info
+    	mainElement.appendChild(recipeCard); // add to main
+  	}
+
 }
 
 /**
