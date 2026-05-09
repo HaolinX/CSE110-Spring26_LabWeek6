@@ -109,6 +109,11 @@ function initFormHandler() {
 		formData.forEach((value,key) => {
 			recipeObject[key] = value;
 		});
+
+		// convert it to number instead of string, update rating to number instead of string
+		// recipeObject.rating = parseInt(recipeObject.rating); // number of star
+		// recipeObject.numRatings = parseInt(recipeObject.numRatings); // number of people who did a review
+
 	    // B6. TODO - Create a new <recipe-card> element
 
 		const recipeCard = document.createElement('recipe-card');
@@ -137,7 +142,7 @@ function initFormHandler() {
 		saveRecipesToStorage(recipes);
 
 		form.reset();
-	})
+	});
 	// Steps B4-B9 will occur inside the event listener from step B3
 	
 	// B10. TODO - Get a reference to the "Clear Local Storage" button
@@ -156,7 +161,7 @@ function initFormHandler() {
 		const main = document.querySelector('main');
 
 		main.innerHTML = '';
-	})
+	});
 	// Steps B12 & B13 will occur inside the event listener from step B11
 	
 }
